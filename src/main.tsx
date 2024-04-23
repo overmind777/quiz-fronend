@@ -1,15 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
 import Discover from './pages/Discover.tsx'
 import Home from './pages/Home.tsx'
+import Layout from './components/Layout.tsx'
+
+import './index.css'
+import 'modern-normalize/modern-normalize.css'
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Home />,
+        element: <Layout />,
         children: [
+            {
+                path: '/home',
+                element: <Home />,
+            },
             {
                 path: '/discover',
                 element: <Discover />,
