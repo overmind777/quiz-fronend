@@ -1,5 +1,6 @@
 import sprite from '/icons/sprite.svg'
 import styled from 'styled-components'
+import ButtonStyled from '../shared/Button'
 
 const QuizesItem = () => {
     return (
@@ -19,7 +20,7 @@ const QuizesItem = () => {
                     <use href={`${sprite}#icon-rating`}></use>
                 </SvgStyled>
             </MiddleWrapper>
-            <ButtonStyled>Start</ButtonStyled>
+        <ButtonStyled nameButton={'Start'} />
         </ItemStyled>
     )
 }
@@ -87,25 +88,4 @@ const CategoryStyled = styled.h2`
     text-align: left;
 `
 
-const ButtonStyled = styled.button`
-    width: 85px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 24px 12px 24px;
-    background-color: transparent;
 
-    box-sizing: border-box;
-    border: 1px solid rgba(244, 244, 244, 0.6);
-    border-radius: 30px;
-
-    color: rgb(244, 244, 244);
-    font-family: Adamina;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: -1%;
-    text-align: left;
-
-    cursor: pointer;
-`

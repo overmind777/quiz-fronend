@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Button from '../shared/Button'
 
 const Hero = () => {
     return (
@@ -11,6 +12,11 @@ const Hero = () => {
                     differ in the degreeof difficulty of questions, the number
                     and type of questions.
                 </TextStyled>
+
+                <ButtonWrapper>
+                  <Button nameButton={'Choose a test'} />
+                  <Button nameButton={'Create a quest'} />
+                </ButtonWrapper>
             </TopBlocWrapper>
             <H2Wrapper>
                 <H2Styled>Are you ready to take the Quiz? </H2Styled>
@@ -41,6 +47,11 @@ const TopBlocWrapper = styled.div`
     line-height: 20px;
     letter-spacing: -1%;
     text-align: left;
+`
+
+const ButtonWrapper = styled.div`
+display: flex;
+gap: 32px;
 `
 
 const TextStyled = styled.p`
