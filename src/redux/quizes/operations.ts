@@ -3,7 +3,7 @@ import axios from 'axios'
 import { AsyncThunkConfig, Query, QuizBody } from '../types'
 
 const baseUrl = axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL: 'http://192.168.88.102:3000/api',
 })
 
 export const getAllQuizes = createAsyncThunk<QuizBody[], Query, AsyncThunkConfig>(

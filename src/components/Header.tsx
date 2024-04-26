@@ -1,10 +1,17 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Header = () => {
+
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate('/home')
+   }
+
     return (
         <HeaderStyled>
-            <StyledLogo>QuizMaster</StyledLogo>
+            <StyledLogo onClick={handleClick}>QuizMaster</StyledLogo>
             <LeftWrapper>
                 <StyledNavLink to={'/adults'}>For Adults</StyledNavLink>
                 <StyledNavLink to={'/children'}>For Children</StyledNavLink>
