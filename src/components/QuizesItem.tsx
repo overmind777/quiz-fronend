@@ -1,33 +1,45 @@
 import sprite from '/icons/sprite.svg'
 import styled from 'styled-components'
 import ButtonStyled from '../shared/Button'
+import { QuizBody } from '../redux/types'
 
-const QuizesItem = () => {
+
+interface QuizesItemProps {
+    data: QuizBody
+}
+
+const QuizesItem: React.FC<QuizesItemProps> = ({
+    data
+}) => {
+
+  const { title, category, finished, ratingQuantity, background } = data
     return (
-        <ItemStyled>
+        <ItemStyled background={background}>
             <TopWrapper>
                 <SvgStyled width={20} height={20}>
                     <use href={`${sprite}#icon-users`}></use>
                 </SvgStyled>
+                <p>{finished}</p>
+                <p>{ratingQuantity}</p>
                 <SvgStyled width={20} height={20}>
                     <use href={`${sprite}#icon-heart`}></use>
                 </SvgStyled>
             </TopWrapper>
             <MiddleWrapper>
-                <TitleStyled>Title</TitleStyled>
-                <CategoryStyled>Category</CategoryStyled>
+                <TitleStyled>{title}</TitleStyled>
+                <CategoryStyled>{category}</CategoryStyled>
                 <SvgStyled width={20} height={20}>
                     <use href={`${sprite}#icon-rating`}></use>
                 </SvgStyled>
             </MiddleWrapper>
-        <ButtonStyled nameButton={'Start'} />
+            <ButtonStyled nameButton={'Start'} />
         </ItemStyled>
     )
 }
 
 export default QuizesItem
 
-const ItemStyled = styled.li`
+const ItemStyled = styled.li<{ background: string }>`
     width: 292px;
     height: 364px;
     display: flex;
@@ -39,7 +51,8 @@ const ItemStyled = styled.li`
     padding-inline: 24px;
     padding-bottom: 100px;
 
-    background: rgba(255, 255, 255, 0.02);
+    /* background: rgba(255, 255, 255, 0.02); */
+    background-color: ${({ background }) => background};
 `
 
 const TopWrapper = styled.div`
