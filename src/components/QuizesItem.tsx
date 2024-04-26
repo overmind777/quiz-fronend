@@ -19,8 +19,8 @@ const QuizesItem: React.FC<QuizesItemProps> = ({
                 <SvgStyled width={20} height={20}>
                     <use href={`${sprite}#icon-users`}></use>
                 </SvgStyled>
-                <p>{finished}</p>
-                <p>{ratingQuantity}</p>
+                <TextStyled>{finished}</TextStyled>
+                <TextStyled>{ratingQuantity}</TextStyled>
                 <SvgStyled width={20} height={20}>
                     <use href={`${sprite}#icon-heart`}></use>
                 </SvgStyled>
@@ -66,6 +66,16 @@ const TopWrapper = styled.div`
 const SvgStyled = styled.svg`
     fill: white;
     stroke: white;
+`
+
+const TextStyled = styled.p`
+    color: rgba(244, 244, 244, 0.5);
+    font-family: Adamina;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -1%;
+    text-align: left;
 `
 
 const MiddleWrapper = styled.div`

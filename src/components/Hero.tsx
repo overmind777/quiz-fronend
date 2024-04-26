@@ -31,6 +31,7 @@ const SectionStyled = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: start;
+    margin-bottom: 380px;
 `
 
 const TopBlocWrapper = styled.div`

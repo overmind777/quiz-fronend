@@ -10,6 +10,8 @@ import Layout from './components/Layout.tsx'
 import './index.css'
 import 'modern-normalize/modern-normalize.css'
 import store from './redux/store.ts'
+import ForAdults from './pages/ForAdults.tsx'
+import ForChildren from './pages/ForChildren.tsx'
 
 const router = createBrowserRouter([
     {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
             {
                 path: '/discover',
                 element: <Discover />,
+            },
+            {
+                path: '/adults',
+                element: <ForAdults />,
+            },
+            {
+                path: '/children',
+                element: <ForChildren />,
             },
         ],
     },
