@@ -21,7 +21,7 @@ const Home = () => {
                   </Wrapper>
                   <NavLinkStyled to={'/adults'}>See all</NavLinkStyled>
                 </TextWrapper>
-                <QuizesList ageGroup={'adults'} />
+                <QuizesList ageGroup={'adults'} param={false} />
             </AdultsSectionStyled>
             <ChildrenSectionStyled>
                 <TitleStyled>For Children</TitleStyled>

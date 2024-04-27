@@ -1,40 +1,31 @@
-import styled from "styled-components"
-import QuizesItem from "./QuizesItem"
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, Query } from "../redux/types"
-import {  getAllQuizes } from "../redux/quizes/operations"
-import { quizSelector } from "../redux/quizes/slice"
+import styled from 'styled-components'
+import QuizesItem from './QuizesItem'
+import { useSelector } from 'react-redux'
 
+import { quizSelector } from '../redux/quizes/slice'
+import CreateNewQuiz from './CreateNewQuiz'
 
+const QuizesList = ({ ageGroup, param }) => {
+    
+    const quizes = useSelector(quizSelector)
 
-const QuizesList: React.FC<Query> = ({ ageGroup }) => {
+    const filteredQuizes = quizes.filter((q) => q.ageGroup === ageGroup)
 
-  const dispatch = useDispatch<AppDispatch>()
-  const quizes = useSelector(quizSelector)
-
-  const filteredQuizes = quizes.filter(q => q.ageGroup === ageGroup)
-  
-
-  useEffect(() => {
-      dispatch(getAllQuizes({ page: 1, pageSize: 10 }))
-  }, [dispatch])
-
-  return (
-      <ListStyled>
-          {filteredQuizes?.map((quiz, idx) => (
-              <QuizesItem
-                  data={quiz}
-                  key={idx}
-              />
-          ))}
-      </ListStyled>
-  )
+    return (
+        <ListStyled>
+            {param ? <CreateNewQuiz /> : null}
+            {filteredQuizes?.map((quiz, idx) => (
+                <QuizesItem data={quiz} key={idx} />
+            ))}
+        </ListStyled>
+    )
 }
 
 export default QuizesList
 
 const ListStyled = styled.ul`
+    display: flex;
+    gap: 24px;
     padding: 0;
     list-style: none;
 `
