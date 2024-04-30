@@ -1,4 +1,4 @@
-import store from "./store"
+import store from './store'
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
@@ -9,10 +9,10 @@ export interface AsyncThunkConfig {
     rejectValue: string
 }
 
-export interface Query { 
-  page?: number
-  pageSize?: number
-  ageGroup?: string
+export interface Query {
+    page?: number
+    pageSize?: number
+    ageGroup?: string
 }
 
 export interface QuizBody {
@@ -31,5 +31,5 @@ export interface QuizBody {
 }
 
 export interface Question {
-  text: string
+    text: string
 }

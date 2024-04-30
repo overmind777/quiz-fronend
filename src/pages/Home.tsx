@@ -2,8 +2,22 @@ import styled from 'styled-components'
 import QuizesList from '../components/QuizesList'
 import Hero from '../components/Hero'
 import { NavLink } from 'react-router-dom'
+import UseQuizzes from '../hooks/UseQuizzes'
 
 const Home = () => {
+
+  const { quizzes, loading, error } = UseQuizzes()
+  const adultsQuizzes = quizzes.filter(q => q.ageGroup === 'adults')
+  const childrenQuizzes = quizzes.filter(q => q.ageGroup === 'children')
+
+  if (loading) {
+      return <p>Loading ...</p>
+  }
+
+  if (error) {
+      return <p>Error</p>
+  }
+
     return (
         <>
             <Hero />
@@ -21,7 +35,7 @@ const Home = () => {
                   </Wrapper>
                   <NavLinkStyled to={'/adults'}>See all</NavLinkStyled>
                 </TextWrapper>
-                <QuizesList ageGroup={'adults'} />
+                <QuizesList quizzes={adultsQuizzes} />
             </AdultsSectionStyled>
             <ChildrenSectionStyled>
                 <TitleStyled>For Children</TitleStyled>
@@ -37,7 +51,7 @@ const Home = () => {
                   </Wrapper>
                   <NavLinkStyled to={'/children'}>See all</NavLinkStyled>
                 </TextWrapper>
-                <QuizesList ageGroup={'children'} />
+                <QuizesList quizzes={childrenQuizzes} />
             </ChildrenSectionStyled>
         </>
     )
