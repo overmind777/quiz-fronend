@@ -6,7 +6,7 @@ const Header = () => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate('/home')
+    navigate('/')
    }
 
     return (
@@ -18,9 +18,9 @@ const Header = () => {
             </LeftWrapper>
             <RightWrapper>
                 <RegisterBtnWrapper>
-                    <StyledNavLink to={'/register'}>Register</StyledNavLink>
+                    <StyledNavLink to={'auth/register'}>Register</StyledNavLink>
                 </RegisterBtnWrapper>
-                <StyledNavLink to={'/login'}>Login</StyledNavLink>
+                <StyledNavLink to={'auth/login'}>Login</StyledNavLink>
             </RightWrapper>
         </HeaderStyled>
     )
