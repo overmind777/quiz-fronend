@@ -1,4 +1,7 @@
+
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import {
     AuthLink,
@@ -21,9 +24,20 @@ interface RegisterFormData {
 }
 
 const Register: React.FC = () => {
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false)
     const [password, setPassword] = useState('')
+
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+        setValue,
+    } = useForm<RegisterFormData>({
+        resolver: yupResolver(schemaRegister),
+    })
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword)
