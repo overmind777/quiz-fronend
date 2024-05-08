@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import QuizesItem from './QuizesItem'
-import { QuizBody } from '../redux/types'
+import { QuizBody } from '../types/types'
 
 interface QuizeListProps {
     quizzes: QuizBody[]

@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { quizesReducer } from "./quizes/slice";
+import { usersReducer } from "./auth/slice";
 
 const rootReducer = combineReducers({
   quizes: quizesReducer,
+  users: usersReducer,
 })
 
 const store = configureStore({

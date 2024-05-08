@@ -1,18 +1,14 @@
 import sprite from '/icons/sprite.svg'
 import styled from 'styled-components'
 import ButtonStyled from '../shared/Button'
-import { QuizBody } from '../redux/types'
-
+import { QuizBody } from '../types/types'
 
 interface QuizesItemProps {
     data: QuizBody
 }
 
-const QuizesItem: React.FC<QuizesItemProps> = ({
-    data
-}) => {
-
-  const { title, category, finished, ratingQuantity, background } = data
+const QuizesItem: React.FC<QuizesItemProps> = ({ data }) => {
+    const { title, category, finished, ratingQuantity, background } = data
     return (
         <ItemStyled background={background}>
             <TopWrapper>
@@ -110,5 +106,3 @@ const CategoryStyled = styled.h2`
     letter-spacing: 0%;
     text-align: left;
 `
-
-

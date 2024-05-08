@@ -1,4 +1,4 @@
-import store from './store'
+import store from '../redux/store'
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
@@ -32,4 +32,19 @@ export interface QuizBody {
 
 export interface Question {
     text: string
+}
+
+export interface RegisterUser {
+    name: string
+    email: string
+    password: string
+}
+
+export interface User {
+    accessToken: string
+}
+
+export interface LoginUser {
+    email: string
+    password: string
 }

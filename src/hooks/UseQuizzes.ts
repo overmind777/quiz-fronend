@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AppDispatch, QuizBody } from '../redux/types'
+import { AppDispatch, QuizBody } from '../types/types'
 import { useDispatch } from 'react-redux'
 import { getAllQuizes } from '../redux/quizes/operations'
 

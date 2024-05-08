@@ -1,30 +1,29 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { AsyncThunkConfig, Query, QuizBody } from '../types'
+import { AsyncThunkConfig, Query, QuizBody } from '../../types/types'
 
-const baseUrl = axios.create({
+export const baseUrl = axios.create({
     baseURL: 'http://localhost:3000/api',
 
     // baseURL: 'http://192.168.88.102:3000/api',
 })
 
-export const getAllQuizes = createAsyncThunk<QuizBody[], Query, AsyncThunkConfig>(
-    'getAllQuizes',
-    async (query, thunkApi) => {
-        const { page, pageSize, ageGroup } = query
-        try {
-          const { data } = await baseUrl.get('/quiz', {
+export const getAllQuizes = createAsyncThunk<
+    QuizBody[],
+    Query,
+    AsyncThunkConfig
+>('getAllQuizes', async (query, thunkApi) => {
+    const { page, pageSize, ageGroup } = query
+    try {
+        const { data } = await baseUrl.get('/quiz', {
             params: {
-              page,
-              pageSize,
-              ageGroup
-            }
-          })
-            return data 
-        } catch (error: unknown) {
-            return thunkApi.rejectWithValue((error as Error).message)
-        }
+                page,
+                pageSize,
+                ageGroup,
+            },
+        })
+        return data
+    } catch (error: unknown) {
+        return thunkApi.rejectWithValue((error as Error).message)
     }
-)
-
-
+})

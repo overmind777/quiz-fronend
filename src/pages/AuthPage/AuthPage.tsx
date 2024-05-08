@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Modal from '../../components/Modal/Modal'
 import Home from '../Home'
 import { useLocation, useNavigate } from 'react-router-dom'
-import Register from '../../components/Register'
+import Register from '../../components/auth/Register'
 
 const AuthPage = () => {
     const [modalContent, setModalContent] = useState<React.ReactNode>(null)

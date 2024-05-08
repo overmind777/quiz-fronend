@@ -1,4 +1,3 @@
-
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -12,10 +11,14 @@ import {
     StyledTitle,
     ValidationError,
     WrapInPass,
-} from '../pages/AuthPage/AuthPage.styled'
+} from '../../pages/AuthPage/AuthPage.styled'
 
 import { useState } from 'react'
-import sprite from '../../../images/icons/sprite.svg'
+import sprite from '../../../public/icons/sprite.svg'
+import { AppDispatch } from '../../types/types'
+import { registerNewUser } from '../../redux/auth/operations'
+import { useDispatch } from 'react-redux'
+import RegisterButton from '../RegistorButton'
 
 interface RegisterFormData {
     name: string
@@ -24,7 +27,7 @@ interface RegisterFormData {
 }
 
 const Register: React.FC = () => {
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch<AppDispatch>()
     const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false)
     const [password, setPassword] = useState('')
@@ -35,9 +38,10 @@ const Register: React.FC = () => {
         handleSubmit,
         formState: { errors },
         setValue,
-    } = useForm<RegisterFormData>({
-        resolver: yupResolver(schemaRegister),
-    })
+    } = useForm<RegisterFormData>()
+    // {
+    //   resolver: yupResolver(schemaRegister),
+    // }
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword)
@@ -55,7 +59,7 @@ const Register: React.FC = () => {
 
     const submit: SubmitHandler<RegisterFormData> = async (data) => {
         try {
-            await dispatch(registerThunk(data)).unwrap()
+            await dispatch(registerNewUser(data)).unwrap()
             reset()
             navigate('/')
             toast.success('Registration successful!')
