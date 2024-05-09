@@ -9,7 +9,7 @@ export const registerNewUser = createAsyncThunk<
     AsyncThunkConfig
 >('registerNewUser', async (query, thunkApi) => {
     try {
-        const data = await baseUrl.post('/auth/register', query)
+        const {data} = await baseUrl.post('/auth/register', query)
 
         return data
     } catch (error) {
@@ -21,7 +21,8 @@ export const loginUser = createAsyncThunk<LoginUser, User, AsyncThunkConfig>(
     'loginUser',
     async (query, thunkApi) => {
         try {
-            const data = await baseUrl.post('/auth/login', query)
+            const { data } = await baseUrl.post('/auth/login', query)
+
             return data
         } catch (error) {
             return thunkApi.rejectWithValue((error as Error).message)

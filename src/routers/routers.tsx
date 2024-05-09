@@ -7,6 +7,9 @@ import Discover from '../pages/Discover'
 import ForAdults from '../pages/ForAdults'
 import ForChildren from '../pages/ForChildren'
 import Login from '../components/auth/Login'
+import UserHomePage from '../pages/UserHomePage'
+import FavoritePage from '../pages/FavoritePage'
+import OwnerQuiz from '../pages/OwnerQuiz'
 
 const appRouter = createBrowserRouter([
     {
@@ -42,6 +45,18 @@ const appRouter = createBrowserRouter([
             {
                 path: '/children',
                 element: <ForChildren />,
+            },
+            {
+                path: '/favorite',
+                element: <FavoritePage />,
+            },
+            {
+                path: '/myQuiz',
+                element: <OwnerQuiz />,
+            },
+            {
+                path: '/home',
+                element: <UserHomePage />,
             },
         ],
     },

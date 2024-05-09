@@ -1,27 +1,58 @@
+import { useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { userSelector } from '../redux/auth/slice'
 
 const Header = () => {
+    const navigate = useNavigate()
+    const loginSelector = useSelector(userSelector).isLoggedIn
 
-  const navigate = useNavigate()
-
-  const handleClick = () => {
-    navigate('/')
-   }
+    const handleClick = () => {
+        navigate('/home')
+    }
 
     return (
         <HeaderStyled>
             <StyledLogo onClick={handleClick}>QuizMaster</StyledLogo>
-            <LeftWrapper>
-                <StyledNavLink to={'/adults'}>For Adults</StyledNavLink>
-                <StyledNavLink to={'/children'}>For Children</StyledNavLink>
-            </LeftWrapper>
-            <RightWrapper>
-                <RegisterBtnWrapper>
-                    <StyledNavLink to={'auth/register'}>Register</StyledNavLink>
-                </RegisterBtnWrapper>
-                <StyledNavLink to={'auth/login'}>Login</StyledNavLink>
-            </RightWrapper>
+            {!loginSelector ? (
+                <>
+                    <LeftWrapper>
+                        <StyledNavLink to={'/adults'}>For Adults</StyledNavLink>
+                        <StyledNavLink to={'/children'}>
+                            For Children
+                        </StyledNavLink>
+                    </LeftWrapper>
+                    <RightWrapper>
+                        <RegisterBtnWrapper>
+                            <StyledNavLink to={'auth/register'}>
+                                Register
+                            </StyledNavLink>
+                        </RegisterBtnWrapper>
+                        <StyledNavLink to={'auth/login'}>Login</StyledNavLink>
+                    </RightWrapper>
+                </>
+            ) : (
+                <>
+                    <LeftWrapper>
+                        <StyledNavLink to={'/home'}>Home</StyledNavLink>
+                        <StyledNavLink to={'/discover'}>
+                            Discover
+                        </StyledNavLink>
+                        <StyledNavLink to={'/favorite'}>Favorite quize</StyledNavLink>
+                        <StyledNavLink to={'/myQuiz'}>
+                            My quize
+                        </StyledNavLink>
+                    </LeftWrapper>
+                    <RightWrapper>
+                        <RegisterBtnWrapper>
+                            <StyledNavLink to={'auth/register'}>
+                                Register
+                            </StyledNavLink>
+                        </RegisterBtnWrapper>
+                        <StyledNavLink to={'auth/login'}>Login</StyledNavLink>
+                    </RightWrapper>
+                </>
+            )}
         </HeaderStyled>
     )
 }

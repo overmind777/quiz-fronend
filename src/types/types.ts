@@ -35,13 +35,18 @@ export interface Question {
 }
 
 export interface RegisterUser {
-    name: string
+    name?: string
     email: string
     password: string
 }
 
+export interface User {
+    name?: string
+    email: string
+}
+
 export interface LoginUser {
-    name: string
+    name?: string
     email: string
     accessToken: string
 }
