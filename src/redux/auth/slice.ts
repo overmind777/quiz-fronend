@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState, User } from "../../types/types";
-import { registerNewUser } from "./operations";
+import { LoginUser, RootState } from "../../types/types";
+import { loginUser, registerNewUser } from "./operations";
 
 interface InitialState {
-  users: User[]
+  users: LoginUser[]
 }
 
 const initialState: InitialState = {
@@ -15,7 +15,11 @@ const usersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(registerNewUser.fulfilled, (state, { payload }) => {
+    builder
+      .addCase(registerNewUser.fulfilled, (state, { payload }) => {
+      state.users.push(payload)
+     })
+      .addCase(loginUser.fulfilled, (state, { payload }) => {
       state.users.push(payload)
      })
 }

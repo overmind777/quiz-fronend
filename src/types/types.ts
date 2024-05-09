@@ -40,11 +40,8 @@ export interface RegisterUser {
     password: string
 }
 
-export interface User {
-    accessToken: string
-}
-
 export interface LoginUser {
+    name: string
     email: string
-    password: string
+    accessToken: string
 }

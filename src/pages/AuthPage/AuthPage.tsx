@@ -3,6 +3,7 @@ import Modal from '../../components/Modal/Modal'
 import Home from '../Home'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Register from '../../components/auth/Register'
+import Login from '../../components/auth/Login'
 
 const AuthPage = () => {
     const [modalContent, setModalContent] = useState<React.ReactNode>(null)
@@ -12,15 +13,14 @@ const AuthPage = () => {
     useEffect(() => {
         if (path.pathname.startsWith('/auth/')) {
             const page = path.pathname.substring(6)
-            console.log(page)
 
             switch (page) {
                 case 'register':
                     setModalContent(<Register />)
                     break
-                // case 'login':
-                //     setModalContent(<Login />)
-                //     break
+                case 'login':
+                    setModalContent(<Login />)
+                    break
                 // case 'logout':
                 //     setModalContent(<Logout />)
                 //     break

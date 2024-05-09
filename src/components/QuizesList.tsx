@@ -1,20 +1,26 @@
 import styled from 'styled-components'
 import QuizesItem from './QuizesItem'
 import { QuizBody } from '../types/types'
+import { useLocation } from 'react-router-dom'
+
 
 interface QuizeListProps {
     quizzes: QuizBody[]
 }
 
+
 const QuizesList: React.FC<QuizeListProps> = ({ quizzes }) => {
+
+const location = useLocation()
+
     return (
         <ListStyled>
-            <ItemStyled>
+            {location.pathname !== '/' ? <ItemStyled>
                 <Wrapper>
                     <PlusWrapper>+</PlusWrapper>
                     <TextStyled>Create quiz</TextStyled>
                 </Wrapper>
-            </ItemStyled>
+            </ItemStyled> : null}
             {quizzes?.map((quiz, idx) => (
                 <QuizesItem data={quiz} key={idx} />
             ))}
