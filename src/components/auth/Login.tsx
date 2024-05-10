@@ -60,7 +60,7 @@ const Login: React.FC = () => {
         try {
             await dispatch(loginUser(data)).unwrap()
             reset()
-            navigate('/')
+            navigate('/home')
             toast.success('Login successful!')
         } catch (error) {
             navigate('/')

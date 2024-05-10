@@ -7,7 +7,7 @@ import Discover from '../pages/Discover'
 import ForAdults from '../pages/ForAdults'
 import ForChildren from '../pages/ForChildren'
 import Login from '../components/auth/Login'
-import UserHomePage from '../pages/UserHomePage'
+import UserHomePage from '../pages/UserHomePage/UserHomePage'
 import FavoritePage from '../pages/FavoritePage'
 import OwnerQuiz from '../pages/OwnerQuiz'
 
